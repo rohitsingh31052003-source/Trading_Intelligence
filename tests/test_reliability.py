@@ -1427,12 +1427,15 @@ class TestScannerLifecycle:
         first = scanner.cycle_count
         assert first >= 1
         # Restart: start -> stop -> start -> stop leaves no orphan worker.
+        # The new run resets the cycle list and produces fresh cycles
+        # (matches the canonical 19.3 restart pattern; asserting a
+        # monotonic >= across the reset is a timing race).
         scanner.start()
         time.sleep(0.05)
         scanner.stop()
         scanner.join(timeout=10)
         assert scanner.state().name == "STOPPED"
-        assert scanner.cycle_count >= first
+        assert scanner.cycle_count > 0
 
     def test_no_overlap_no_duplicate_cycle_ids(self):
         from dashboard.continuous_scanner import ContinuousScanner

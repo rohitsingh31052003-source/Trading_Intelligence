@@ -1,0 +1,17 @@
+AGENTS.md
+src/engine/persistence/exceptions.py
+src/engine/config/forward_validation_config.py
+src/engine/models/forward_validation.py
+src/dashboard/forward_validation.py
+src/engine/persistence/forward_validation_serialization.py
+src/engine/persistence/forward_validation_store.py
+src/engine/reporting/forward_validation.py
+scripts/forward_validation.py
+scripts/test_checkpoint_19_9.py
+tests/_checkpoint19_9_fixtures.py
+tests/test_forward_validation.py
+tests/test_forward_validation_adversarial.py
+tests/test_forward_validation_persistence.py
+tests/test_forward_validation_cli.py
+tests/test_reliability.py
+docs/checkpoint_19_9_validation_forward_testing_audit.md

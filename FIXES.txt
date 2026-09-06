@@ -1,0 +1,9 @@
+Post-download fixes applied (2026-09-06):
+1. tests/test_forward_validation_persistence.py::test_default_directory
+   - Windows-incompatible str().endswith('data/forward_validation') replaced
+     with the repo convention Path.cwd() / 'data' / 'forward_validation'.
+2. tests/test_reliability.py::TestScannerLifecycle::test_start_stop_start_stop
+   - Pre-existing 19.8 flaky timing race (assert cycle_count >= first across a
+     reset counter; failed on loaded machines). Aligned with the canonical 19.3
+     restart pattern (assert cycle_count > 0). Test intent preserved.
+Full suite after fixes: 7155 passed / 12 skipped / 2 warnings (0 failed).

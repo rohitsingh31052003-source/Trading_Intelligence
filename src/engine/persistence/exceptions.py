@@ -84,6 +84,33 @@ class UnsupportedOperationalStateSchemaVersionError(OperationalStoreError):
     version."""
 
 
+# ============================================================
+# FORWARD-VALIDATION PERSISTENCE EXCEPTIONS (Checkpoint 19.9)
+# ============================================================
+
+
+class ForwardStoreError(Exception):
+    """Base error for the forward-validation store (Checkpoint 19.9)."""
+
+
+class ForwardSessionNotFoundError(ForwardStoreError):
+    """A requested forward-validation session was not found in the store."""
+
+
+class ForwardObservationNotFoundError(ForwardStoreError):
+    """A requested forward observation was not found in the store."""
+
+
+class ForwardStoreIntegrityError(ForwardStoreError):
+    """A persisted forward-validation document is internally inconsistent
+    or conflicts with an existing document on a non-overwrite save."""
+
+
+class UnsupportedForwardSchemaVersionError(ForwardStoreError):
+    """A persisted forward-validation document uses an unsupported schema
+    version."""
+
+
 __all__ = [
     "AuthorizationIntegrityError",
     "AuthorizationNotFoundError",
@@ -91,6 +118,10 @@ __all__ = [
     "CommandIntegrityError",
     "CommandNotFoundError",
     "CommandStoreError",
+    "ForwardObservationNotFoundError",
+    "ForwardSessionNotFoundError",
+    "ForwardStoreError",
+    "ForwardStoreIntegrityError",
     "OperationalStateIntegrityError",
     "OperationalStateNotFoundError",
     "OperationalStoreError",
@@ -99,6 +130,7 @@ __all__ = [
     "SubmissionStoreError",
     "UnsupportedAuthorizationSchemaVersionError",
     "UnsupportedCommandSchemaVersionError",
+    "UnsupportedForwardSchemaVersionError",
     "UnsupportedOperationalStateSchemaVersionError",
     "UnsupportedSubmissionSchemaVersionError",
 ]
