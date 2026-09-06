@@ -66,6 +66,24 @@ class UnsupportedSubmissionSchemaVersionError(SubmissionStoreError):
     """A persisted submission lifecycle uses an unsupported schema version."""
 
 
+class OperationalStoreError(Exception):
+    """Base error for the operational-state store (Checkpoint 19.8)."""
+
+
+class OperationalStateNotFoundError(OperationalStoreError):
+    """No persisted operational-state snapshot exists."""
+
+
+class OperationalStateIntegrityError(OperationalStoreError):
+    """A persisted operational-state snapshot is internally inconsistent
+    or conflicts with an existing snapshot on a non-overwrite save."""
+
+
+class UnsupportedOperationalStateSchemaVersionError(OperationalStoreError):
+    """A persisted operational-state snapshot uses an unsupported schema
+    version."""
+
+
 __all__ = [
     "AuthorizationIntegrityError",
     "AuthorizationNotFoundError",
@@ -73,10 +91,14 @@ __all__ = [
     "CommandIntegrityError",
     "CommandNotFoundError",
     "CommandStoreError",
+    "OperationalStateIntegrityError",
+    "OperationalStateNotFoundError",
+    "OperationalStoreError",
     "SubmissionIntegrityError",
     "SubmissionNotFoundError",
     "SubmissionStoreError",
     "UnsupportedAuthorizationSchemaVersionError",
     "UnsupportedCommandSchemaVersionError",
+    "UnsupportedOperationalStateSchemaVersionError",
     "UnsupportedSubmissionSchemaVersionError",
 ]
